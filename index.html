@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web Sencilla</title>
+    <title>Mi Página Web con Chat n8n</title>
+    
+    <!-- CSS del Chat n8n -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
     <style>
         * {
             margin: 0;
@@ -209,6 +213,14 @@
             text-decoration: none;
         }
 
+        /* Estilos para el chat de n8n */
+        .n8n-chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav ul {
@@ -223,6 +235,12 @@
             .content-grid {
                 grid-template-columns: 1fr;
             }
+
+            .n8n-chat-container {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+            }
         }
     </style>
 </head>
@@ -230,8 +248,8 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1>Mi Página Web</h1>
-            <p>Bienvenido a mi sitio web sencillo y profesional</p>
+            <h1>Mi Página Web con Chat</h1>
+            <p>Bienvenido a mi sitio web con asistente virtual integrado</p>
         </div>
     </header>
 
@@ -338,6 +356,30 @@
         </div>
     </footer>
 
+    <!-- Chat n8n Container -->
+    <div class="n8n-chat-container"></div>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        // REEMPLAZA 'YOUR_PRODUCTION_WEBHOOK_URL' con tu webhook real de n8n
+        createChat({
+            webhookUrl: 'YOUR_PRODUCTION_WEBHOOK_URL',
+            target: '.n8n-chat-container',
+            mode: 'bubble',
+            welcomeMessage: '¡Hola! 👋 ¿En qué puedo ayudarte hoy?',
+            theme: {
+                primaryColor: '#007cba',
+                secondaryColor: '#005a87',
+                buttonTextColor: '#ffffff'
+            },
+            settings: {
+                allowHtml: true,
+                showSource: false
+            }
+        });
+    </script>
+
     <script>
         // Smooth scroll para los enlaces de navegación
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -359,6 +401,11 @@
             e.preventDefault();
             alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
             this.reset();
+        });
+
+        // Configuración adicional para el chat
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página cargada - Chat n8n listo para configurar');
         });
     </script>
 </body>
