@@ -363,21 +363,14 @@
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
         // REEMPLAZA 'YOUR_PRODUCTION_WEBHOOK_URL' con tu webhook real de n8n
-        createChat({
-            webhookUrl: 'https://jesusarritola.app.n8n.cloud/webhook/5317c586-e207-467b-9b32-842513e7d2a7/chat',
-            target: '.n8n-chat-container',
-            mode: 'bubble',
-            welcomeMessage: '¡Hola! 👋 ¿En qué puedo ayudarte hoy?',
-            theme: {
-                primaryColor: '#007cba',
-                secondaryColor: '#005a87',
-                buttonTextColor: '#ffffff'
-            },
-            settings: {
-                allowHtml: true,
-                showSource: false
-            }
-        });
+      <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://jesusarritola.app.n8n.cloud/webhook/5317c586-e207-467b-9b32-842513e7d2a7/chat'
+	});
+</script>;
     </script>
 
     <script>
